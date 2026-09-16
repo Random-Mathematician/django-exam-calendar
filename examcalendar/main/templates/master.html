@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Calendario de exames</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    {% load static %}
+    <link rel="icon" href="{% static 'favicon.png' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <script src="{% static 'build-calendar.js' %}"></script>
+  </head>
+  <body>
+    <div id="main-flex">
+      <main>
+        {% block content %}
+        {% endblock %}
+      </main>
+      <nav>
+        <div>
+          <a href="/">Volver ao mes actual</a>
+        </div>
+      </nav>
+    </div>
+  </body>
+</html>

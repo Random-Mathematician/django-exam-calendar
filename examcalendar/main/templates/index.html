@@ -1,0 +1,10 @@
+{% extends "master.html" %}
+
+{% block content %}
+<h1>
+  <span id="month-name"></span>
+  <a class="calendar-nav" href="/1/"><i class="fa fa-caret-right"></i></a>
+</h1>
+<div id="calendar-container"></div>
+<script>buildAndInsertCalendar();</script>
+{% endblock %}

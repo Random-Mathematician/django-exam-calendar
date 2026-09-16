@@ -1,0 +1,16 @@
+{% extends "master.html" %}
+
+{% block content %}
+<h1>
+  <a class="calendar-nav" href="/{{ month|add:-1 }}/"><i class="fa fa-caret-left"></i></a>
+  <span id="month-name"></span>
+  <a class="calendar-nav" href="/{{ month|add:1 }}/"><i class="fa fa-caret-right"></i></a>
+</h1>
+<div id="calendar-container"></div>
+<template class="django-vars" id="dv-month">{{ month }}</template>
+<script>
+    let selmonth = document.getElementById("dv-month").innerHTML;
+    let today = new Date();
+    buildAndInsertCalendar(today.getFullYear(), today.getMonth()+Number(selmonth));
+</script>
+{% endblock %}

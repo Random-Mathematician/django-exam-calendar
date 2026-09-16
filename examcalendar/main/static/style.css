@@ -1,0 +1,66 @@
+:root {
+    --dark-red: rgb(168,32,32);
+    --dark-blue: rgb(32,100,168);
+    --mid-red: rgb(192,48,48);
+    --blue: rgb(48,142,255);
+    --red: rgb(255,48,48);
+    --bg-light: #00587c;
+    --bg-dark: #081422;
+}
+
+body {
+    /*background: black;
+    color: white;*/
+    min-height: calc(90vh - 16px);
+    padding: 0 15px;
+}
+
+#main-flex {
+    display: flex;
+    align-items: flex-start;
+}
+
+main {flex-grow: 2;}
+
+nav {
+    display: block;
+    padding: 2em;
+    max-height: 80vh;
+}
+
+nav div {
+    margin-top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+nav a {
+    color: inherit;
+    display: block;
+    text-align: center;
+    font-size: 2em;
+    text-decoration: none;
+}
+
+.calendar-nav {
+    color: inherit;
+}
+
+#calendar th, #calendar td {border: 1px solid black;}
+
+#calendar {
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+
+#calendar td {
+    min-width: 10em;
+    height: 5em;
+    vertical-align: top;
+}
+
+#calendar th {
+    height: 2em;
+    background-color: mediumaquamarine;
+}
