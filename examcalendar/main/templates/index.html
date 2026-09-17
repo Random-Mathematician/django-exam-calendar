@@ -6,5 +6,7 @@
   <a class="calendar-nav" href="/1/"><i class="fa fa-caret-right"></i></a>
 </h1>
 <div id="calendar-container"></div>
+{{ exams|json_script:"django-vars-exams" }}
+{{ specialdates|json_script:"django-vars-specialdates" }}
 <script>buildAndInsertCalendar();</script>
 {% endblock %}

@@ -3,9 +3,20 @@ function posMod(x, y) {
     return (x+y)%y;
 }
 
+function retrieveDjangoData(name) {
+    script = document.getElementById("django-vars-"+name);
+    return JSON.parse(script.textContent);
+}
+
 function buildAndInsertCalendar(...dateargs) {
-    // Get selected time
+    // Get selected time and django vars
     let now = new Date(...dateargs);
+    const exams = retrieveDjangoData("exams")
+    const sd = retrieveDjangoData("specialdates")
+
+    // Convert from date strings to numbered days
+    exams.forEach(e=>{e.date=(new Date(e.date)).getDate()})
+    sd.forEach(e=>{e.date=(new Date(e.date)).getDate()})
 
     // Print current month as calendar title
     let month = now.toLocaleString("gl-ES", {month: "long"});
@@ -22,7 +33,7 @@ function buildAndInsertCalendar(...dateargs) {
     do {week = cal.splice(0,7); weekedCal.push(week);} while (week.length>0)
     weekedCal = weekedCal.map(e => e.slice(0,5))
         .filter(e=>!e.every(f=>!f))
-        .filter(e=>e.length!=0);
+        .filter(e=>e.length!=0); 
 
     // Create calendar DOM node
     let calendar = document.createElement("table");
@@ -39,6 +50,17 @@ function buildAndInsertCalendar(...dateargs) {
         for (let day of week) {
             let cell = document.createElement("td");
             cell.innerHTML = `${day}` ? day : "";
+            // If the day is special, give it a class
+            if (special = sd.filter(e=>e.date==day)[0]) {
+                cell.classList.add("day-special-"+special.event.value)
+            }
+            for (let ex of exams.filter(e=>e.date==day)) {
+                examDiv = document.createElement("div");
+                examDiv.innerHTML = `<a href='/exam/${ex.id}'>
+                → ${ex.name} de ${ex.subject.label}</a>`;
+                if (!ex.isConfirmed) {examDiv.classList.add("exam-unconfirmed")}
+                cell.appendChild(examDiv);
+            }
             tr.appendChild(cell);
         }
         calendar.appendChild(tr);

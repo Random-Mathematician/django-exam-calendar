@@ -8,6 +8,8 @@
 </h1>
 <div id="calendar-container"></div>
 <template class="django-vars" id="dv-month">{{ month }}</template>
+{{ exams|json_script:"django-vars-exams" }}
+{{ specialdates|json_script:"django-vars-specialdates" }}
 <script>
     let selmonth = document.getElementById("dv-month").innerHTML;
     let today = new Date();

@@ -1,0 +1,45 @@
+{% extends "master.html" %}
+
+{% block content %}
+<h1>Engadindo exame</h1>
+<form method="post" action="{% url 'submit' %}"><ul>
+  {% csrf_token %}
+  <li>
+  <input type="hidden" name="content" value="exam">
+    <label for="subject">Materia: </label>
+    <select id="subject" name="subject" required>
+      {% for s in subjects %}
+      <option value="{{s.value}}">{{ s.label }}</option>
+      {% endfor %}
+    </select>
+  </li><li>
+    <label for="name">Nome ou contidos do exame
+      <small>(ex.: <i>1º parcial</i> ou <i>Literatura T1</i>)</small>:
+    </label>
+    <input type="text" maxlength="100" minlength="1" id="name" name="name" required>
+  </li><li>
+    <label for="date">Data: </label>
+    <input type="date" id="date" name="date" required>
+  </li><li>
+    <label for="period">Hora: </label>
+    <select id="period" name="period" required>
+      <optgroup label="Mañá">
+      {% for p in periods %}{% if not forloop.last %}
+      <option value="{{p.value}}">{{ p.label }}</option>
+      {% endif %}{% endfor %}
+      </optgroup>
+      <optgroup label="Tarde">
+      {% for p in periods %}{% if forloop.last %}
+      <option value="{{p.value}}">{{ p.label }}</option>
+      {% endif %}{% endfor %}
+      </optgroup>
+    </select>
+  </li><li>
+    <label for="isConfirmed">Está confirmado?
+      <small>(se aínda non se sabe seguro, non)</small>
+    </label>
+    <input type="checkbox" name="isConfirmed" id="isConfirmed" checked>
+  </li></ul>
+    <input type="submit" value="Engadir">
+</form>
+{% endblock %}
