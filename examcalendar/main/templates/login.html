@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Entrar ao sitio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <style>
+      body {
+        background-color: lightgrey;
+      }
+      div#form-container {
+        display: flex;
+        justify-content: center;
+      }
+      form {
+        display: flex;
+        border: 1px solid black;
+        flex-direction: column;
+        max-width: 30em;
+        padding: 1em;
+        align-items: center;
+      }
+      form * {margin-bottom: 0.5em;}
+      h3 {margin:0 0 0.7em; padding:0; text-decoration: underline;}
+    </style>
+  </head>
+  <body>
+    <div id="form-container">
+    <form method="post" action="{% url 'processlogin' %}">
+      {% csrf_token %}
+      <h3>Inicio de sesión obrigatorio</h3>
+      <i>Os usuarios non autorizados non teñen acceso ao recurso.<br></i>
+      {% if failed %}
+      <span style="color:red;">Credenciais incorrectas</span>
+      {% endif %}
+      <input type="hidden" name="next" value="{{ next }}">
+      <span>
+      <label for="username">Nome de usuario: </label>
+      <input type="text" id="username" name="username">
+      </span><span>
+      <label for="password">Contrasinal: </label>
+      <input type="password" id="password" name="password">
+      </span>
+      <input type="submit" value="Iniciar Sesión">
+    </form>
+    </div>
+  </body>
+</html>

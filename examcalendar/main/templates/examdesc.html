@@ -1,0 +1,22 @@
+{% extends "master.html" %}
+
+{% block content %}
+<h1>Vendo <i>{{ exam }}</i></h1>
+<ul>
+  <li>Día: {{ exam.date }}</li>
+  <li>Hora: {{ exam.periodlabel }}</li>
+  {% if not exam.isConfirmed %}
+  <li>Este exame non está confirmado e pode cambiar de data.</li>
+  {% endif %}
+</ul>
+
+<br>
+<form method="post" action="{% url 'delete' %}">
+  {% csrf_token %}
+  <input type="hidden" name="examid" value="{{ exam.id }}">
+  <button type="submit" id="delete-button"
+    onclick="return confirm('Eliminar o exame? Esta acción non é revertible')">
+    <i class="fa fa-trash-o"></i> Eliminar
+  </button>
+</form>
+{% endblock %}

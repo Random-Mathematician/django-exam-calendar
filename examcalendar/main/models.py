@@ -49,6 +49,9 @@ class Exam(models.Model):
             "period": self.Periods(self.period).jsify(),
             "isConfirmed": self.isConfirmed
         }
+    
+    def periodlabel(self):
+        return self.Periods(self.period).label
 
 class SpecialDate(models.Model):
     class DateState(models.IntegerChoices):

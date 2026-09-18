@@ -3,6 +3,7 @@
   <head>
     <title>Calendario de exames</title>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     {% load static %}
     <link rel="icon" href="{% static 'favicon.png' %}">
@@ -20,7 +21,7 @@
           <a href="/"><i class="fa fa-home"></i> Inicio</a>
           <a href="/new/"><i class="fa fa-plus"></i> Engadir exame</a>
           <a href="/create-sd/"><i class="fa fa-calendar-plus-o"></i> Engadir data</a>
-          <a href="/"><i class="fa fa-sign-out"></i> Saír</a>
+          <a href="/logging-out" onclick="return confirm('Saír da sesión?')"><i class="fa fa-sign-out"></i> Saír</a>
           <!--
           <span id="darkmode-container">
           <i class="fa fa-adjust"></i> Modo Escuro<input type="checkbox" id="darkmode">

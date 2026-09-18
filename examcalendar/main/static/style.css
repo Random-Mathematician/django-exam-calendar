@@ -5,6 +5,9 @@
     --text-faint: grey;
     --bg: lightgrey;
     --day-special-0: lightskyblue;
+    --day-special-1: peachpuff;
+    --day-special-2: silver;
+    --warn-bg: lightcoral;
 }
 
 :root:has(#darkmode:checked) {
@@ -14,6 +17,7 @@
     --text-faint: lightgray;
     --bg: #202020;
     --day-special-0: darkblue;
+    --warn-bg: darkred;
 }
 
 body {
@@ -92,3 +96,15 @@ nav a {
 .day-special-0 {background-color: var(--day-special-0);}
 .day-special-1 {background-color: var(--day-special-1);}
 .day-special-2 {background-color: var(--day-special-2);}
+
+#delete-button {
+    background-color: var(--warn-bg);
+    border: 2px solid red;
+    border-radius: 3px;
+    font-size: 1em;
+    padding: 5px 10px;
+}
+
+#delete-button:hover {
+    background-color: red;
+}

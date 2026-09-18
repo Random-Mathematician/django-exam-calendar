@@ -1,0 +1,21 @@
+{% extends "master.html" %}
+
+{% block content %}
+<h1>Engadindo data especial</h1>
+<form method="post" action="{% url 'submit' %}"><ul>
+  {% csrf_token %}
+  <input type="hidden" name="content" value="sd">
+  <li>
+    <label for="date">Data: </label>
+    <input type="date" id="date" name="date" required>
+  </li><li>
+    <label for="event">Evento: </label>
+    <select id="event" name="event" required>
+      {% for e in events %}
+      <option value="{{e.value}}">{{ e.label }}</option>
+      {% endfor %}
+    </select>
+  </li></ul>
+  <input type="submit" value="Engadir">
+</form>
+{% endblock %}
