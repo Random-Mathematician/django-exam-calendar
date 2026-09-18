@@ -24,7 +24,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ["SECRET_KEY"]
 
 DEBUG = False
-ALLOWED_HOSTS = ["exam-calendar-g6pndxiiw-random-mathematician.vercel.app"]
+ALLOWED_HOSTS = ["exam-calendar-rose.vercel.app"]
+# That should be the static one right?
 
 
 # Application definition
