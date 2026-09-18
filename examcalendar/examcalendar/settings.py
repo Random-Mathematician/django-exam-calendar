@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ["SECRET_KEY"]
 
 DEBUG = False
-ALLOWED_HOSTS = ["exam-calendar-kohl.vercel.app"]
+ALLOWED_HOSTS = ["exam-calendar-g6pndxiiw-random-mathematician.vercel.app"]
 
 
 # Application definition
