@@ -4,9 +4,9 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from .models import Exam, SpecialDate
-from datetime import date
+from datetime import date as datemodule # Slight workaround
 
-TODAY = date.today()
+TODAY = datemodule.today()
 
 @login_required
 def index(req):
@@ -65,13 +65,13 @@ def submit(req):
         new = Exam(
             subject=int(req.POST["subject"]),
             name=req.POST["name"],
-            date=date.strptime(req.POST["date"], "%Y-%m-%d"),
+            date=datemodule.strptime(req.POST["date"], "%Y-%m-%d"),
             period=int(req.POST["period"]),
             isConfirmed=("isConfirmed" in req.POST)
         )
     elif req.POST["content"] == "sd":
         new = SpecialDate(
-            date=date.strptime(req.POST["date"], "%Y-%m-%d"),
+            date=datemodule.strptime(req.POST["date"], "%Y-%m-%d"),
             event=int(req.POST["event"])
         )
     else: raise exceptions.ValidationError("Invalid Submit Request Parameters")
